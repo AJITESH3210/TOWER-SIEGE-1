@@ -1,14 +1,13 @@
-class BaseClass{
-    constructor(x, y, width, height, angle) {
+class Circle{
+    constructor(x, y, radius) {
         var options = {
             'restitution':0.8,
-            'friction':0.1,
-            'density':3,
-            'isStatic': false
+            'friction':1.0,
+            'density':1.0,
+            'isStatic': true
         }
-        this.body = Bodies.rectangle(x, y, width, height, options);
-        this.width = width;
-        this.height = height;
+        this.body = Bodies.circle(x, y, radius,  options);
+      this.radius = radius
        // this.image = loadImage("sprites/base.png");
         World.add(world, this.body);
       }
@@ -17,8 +16,8 @@ class BaseClass{
         push();
         translate(this.body.position.x, this.body.position.y);
         rotate(angle);
-        rectMode(CENTER);
-        rect(0, 0, this.width, this.height);
+        //rectMode(CENTER);
+        ellipse(0, 0, this.width, this.height);
         // imageMode(CENTER);
         //image(this.image, 0, 0, this.width, this.height);
         pop();

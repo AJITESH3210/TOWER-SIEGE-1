@@ -43,12 +43,12 @@ function setup(){
     block22 = new Box2(1060,265,60,50);
     block23 = new Box3(1000,215,60,50);
     
-    polygon1 = Bodies.circle(400,450,60,30);
+    polygon1 = new Circle(150,200,30);
 
    // Matter.Bodies.polygon1(400,450,6,30);
     //polygon1 = Bodies.circle(50,200,20);
     World.add(world,polygon1);
-    slingshot = new SlingShot(this.polygon, { x : 100  ,y : 200 } );
+    slingshot = new SlingShot(polygon1.body, { x : 100  ,y : 200 } );
 }
 
 function draw(){
@@ -86,14 +86,17 @@ function draw(){
  
    slingshot.display();
    polygon1.display();
+
+  
+   
 }
    
 
 function mouseDragged(){
-    Matter.Body.setPosition(polygon.body, {x: mouseX , y: mouseY});
+    Matter.Body.setPosition(polygon1.body, {x: mouseX , y: mouseY});
 }
-
-
 function mouseReleased(){
     slingshot.fly();
 }
+
+
